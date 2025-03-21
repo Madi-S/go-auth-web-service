@@ -9,6 +9,12 @@ do something first lol
 1. protoc for Windows, protobuf-compiler for Linux.
 2. grpcio-tools, grpclib, protobuf (python packages).
 
+### Run
+
+```bash
+go run cmd/sso/main.go
+```
+
 ### Generate protos for go
 
 ```bash
