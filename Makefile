@@ -1,6 +1,6 @@
 PROTO_SRC_DIR=protos/proto
 PYTHON_OUT_DIR=protos/gen/python
-GO_OUT_DIR=protos/gen/go
+GO_OUT_DIR=go/protos/gen
 
 # Find all .proto files
 PROTO_FILES=$(wildcard $(PROTO_SRC_DIR)/**/*.proto)

@@ -1,10 +1,9 @@
 package main
 
 import (
-	"errors"
+	"go-auth-service/internal/app"
 	"go-auth-service/internal/config"
 	"go-auth-service/internal/lib/logger/handlers/slogpretty"
-	"go-auth-service/internal/lib/logger/sl"
 	"log/slog"
 	"os"
 )
@@ -19,14 +18,11 @@ func main() {
 
 	log := setupLogger(config.Env)
 
-	log.Info("starting application",
-		slog.String("env", config.Env),
-		slog.Any("grpc", config.GRPC),
-		slog.Duration("token_ttl", config.TokenTTL),
-	)
+	log.Info("starting application", slog.Any("config", config))
 
-	err := errors.New("some error")
-	log.Error("error message", sl.Err(err))
+	application := app.New(log, config.GRPC.Port, config.StoragePath, config.TokenTTL)
+
+	application.GRPCServer.MustRun()
 }
 
 func setupLogger(env string) *slog.Logger {
