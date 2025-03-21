@@ -35,3 +35,9 @@ Install it as a symbolic link to package directory:
 cd protos/gen/python
 pip install -e .
 ```
+
+Or just use make and update MANIFEST.in by yourself
+
+```bash
+make
+```
