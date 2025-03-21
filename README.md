@@ -15,18 +15,12 @@ do something first lol
 go run cmd/sso/main.go
 ```
 
-### Generate protos for go
+### Generate proto files
+
+Run makefile:
 
 ```bash
-protoc -I protos/proto protos/proto/<your proto file> --go_out=protos/gen/go --go_opt=paths=source_relative --go-grpc_out=protos/gen/go --go-grpc_opt=paths=source_relative
-```
-
-### Generate protos and a package for python
-
-Generate proto files:
-
-```bash
-python -m grpc_tools.protoc -I protos/proto protos/proto/<your proto file> --python_out=protos/gen/python --grpc_python_out=protos/gen/python
+make
 ```
 
 Update MANIFEST.in with following schema for each proto package:
@@ -35,15 +29,9 @@ Update MANIFEST.in with following schema for each proto package:
 recursive-include <package/folder name> *.proto
 ```
 
-Install it as a symbolic link to package directory:
+Install it as a symbolic link to package directory (just once is enough, because it is a local package):
 
 ```bash
 cd protos/gen/python
 pip install -e .
-```
-
-Or just use make and update MANIFEST.in by yourself
-
-```bash
-make
 ```
