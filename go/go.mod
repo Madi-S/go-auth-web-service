@@ -6,8 +6,11 @@ require github.com/Madi-S/go-auth-web-service v0.0.0-20250321163048-ed8aa49b41d7
 
 require (
 	github.com/BurntSushi/toml v1.2.1 // indirect
+	github.com/fatih/color v1.18.0 // indirect
 	github.com/ilyakaznacheev/cleanenv v1.5.0 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
+	github.com/mattn/go-colorable v0.1.13 // indirect
+	github.com/mattn/go-isatty v0.0.20 // indirect
 	golang.org/x/net v0.37.0 // indirect
 	golang.org/x/sys v0.31.0 // indirect
 	golang.org/x/text v0.23.0 // indirect

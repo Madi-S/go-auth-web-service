@@ -33,7 +33,7 @@ func MustLoad() *Config {
 	}
 
 	var config Config
-	if err := cleanenv.ReadConfig(configPath, config); err != nil {
+	if err := cleanenv.ReadConfig(configPath, &config); err != nil {
 		panic("failed to read config: " + err.Error())
 	}
 
@@ -45,13 +45,15 @@ func MustLoad() *Config {
 //
 // Priority: flag > env > default.
 func fetchConfigPath() string {
-	var res string = "./config/dev.yml"
+	var res string
 
 	flag.StringVar(&res, "config", "", "path to config file")
 	flag.Parse()
 
 	if res == "" {
-		res = os.Getenv("CONFIG_PATH")
+		if res = os.Getenv("CONFIG_PATH"); res == "" {
+			res = "./config/dev.yml"
+		}
 	}
 
 	return res
