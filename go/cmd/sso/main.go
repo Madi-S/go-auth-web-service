@@ -6,6 +6,9 @@ import (
 	"go-auth-service/internal/lib/logger/handlers/slogpretty"
 	"log/slog"
 	"os"
+	"os/signal"
+	"sync"
+	"syscall"
 )
 
 const (
@@ -22,7 +25,23 @@ func main() {
 
 	application := app.New(log, config.GRPC.Port, config.StoragePath, config.TokenTTL)
 
-	application.GRPCServer.MustRun()
+	var wg sync.WaitGroup
+
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+		application.GRPCServer.MustRun()
+	}()
+
+	stop := make(chan os.Signal, 1)
+	signal.Notify(stop, syscall.SIGINT, syscall.SIGTERM, syscall.SIGHUP, syscall.SIGQUIT, syscall.SIGABRT)
+
+	sig := <-stop
+	log.Info("received signal", slog.String("signal", sig.String()))
+
+	application.GRPCServer.Stop()
+	log.Info("application stopped")
+	wg.Wait()
 }
 
 func setupLogger(env string) *slog.Logger {
