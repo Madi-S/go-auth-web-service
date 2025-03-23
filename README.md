@@ -1,7 +1,7 @@
 # To build and run
 
 ```bash
-do something first lol
+docker-compose up --build
 ```
 
 ## Prerequisites
@@ -21,17 +21,4 @@ Run makefile:
 
 ```bash
 make
-```
-
-Update MANIFEST.in with following schema for each proto package:
-
-```
-recursive-include <package/folder name> *.proto
-```
-
-Install it as a symbolic link to package directory (just once is enough, because it is a local package):
-
-```bash
-cd protos/gen/python
-pip install -e .
 ```

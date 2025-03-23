@@ -1,5 +1,5 @@
-PROTO_SRC_DIR=protos/proto
-PYTHON_OUT_DIR=protos/gen/python
+PROTO_SRC_DIR=protos
+PYTHON_OUT_DIR=python/protos/gen
 GO_OUT_DIR=go/protos/gen
 
 # Find all .proto files

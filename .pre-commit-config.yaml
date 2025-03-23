@@ -1,0 +1,27 @@
+repos:
+    - repo: local
+      hooks:
+          - id: gofmt
+            name: gofmt
+            entry: gofmt -w
+            language: system
+            files: \.go$
+    - repo: https://github.com/astral-sh/ruff-pre-commit
+      rev: v0.11.2
+      hooks:
+          - id: ruff
+            args: [--fix]
+          - id: ruff-format
+    - repo: https://github.com/pre-commit/mirrors-mypy
+      rev: v1.15.0
+      hooks:
+          - id: mypy
+            # args: [--strict, --ignore-missing-imports]
+    - repo: https://github.com/astral-sh/uv-pre-commit
+      rev: 0.6.9
+      hooks:
+        - id: uv-lock
+        - id: uv-export
+          args:
+            - --no-hashes
+            - --output-file=requirements.txt
