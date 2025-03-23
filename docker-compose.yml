@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+    grpc-server:
+        build:
+            context: ./go
+            dockerfile: Dockerfile
+        ports:
+            - '44044:44044'
+        restart: unless-stopped
