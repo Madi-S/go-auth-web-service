@@ -42,3 +42,7 @@ uv export --no-dev --output-file requirements.txt
 -   Would be nice to use proper configuration techniques for both apps for different environments.
 
 <i>Even though it is just a short demo of how adequately use go grpc server and python grpc client.</i>
+
+<hr>
+
+<i>Inspired by one of Nikolai Tuzov's video</i>
