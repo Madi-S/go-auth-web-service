@@ -1,6 +1,16 @@
-def main():
-    print("Hello from python!")
+from fastapi import FastAPI
+from src.routers.dummy import router as dummy_router
+
+app = FastAPI()
+
+app.include_router(dummy_router)
 
 
-if __name__ == "__main__":
-    main()
+@app.get("/ping")
+def root():
+    return "pong"
+
+
+@app.get("/healthz")
+def health_check():
+    return {"status": "ok"}

@@ -16,12 +16,22 @@ repos:
       rev: v1.15.0
       hooks:
           - id: mypy
-            # args: [--strict, --ignore-missing-imports]
+            args: [--strict, --ignore-missing-imports]
+            additional_dependencies:
+                [
+                    'pyyaml>=6.0.2',
+                    'types-PyYAML',
+                    'types-protobuf',
+                    'mypy-protobuf',
+                    'pydantic>=2.10.6',
+                    'grpcio>=1.71.0'
+                ]
+            exclude: ".*_pb2\\.py$"
     - repo: https://github.com/astral-sh/uv-pre-commit
       rev: 0.6.9
       hooks:
-        - id: uv-lock
-        - id: uv-export
-          args:
-            - --no-hashes
-            - --output-file=requirements.txt
+          - id: uv-lock
+          - id: uv-export
+            args:
+                - --no-hashes
+                - --output-file=requirements.txt
