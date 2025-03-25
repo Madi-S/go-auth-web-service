@@ -8,6 +8,7 @@ docker-compose up --build
 
 1. protoc for Windows, protobuf-compiler for Linux.
 2. grpcio-tools, grpclib, protobuf (python packages).
+3. https://github.com/nipunn1313/mypy-protobuf (`pip install mypy-protobuf`)
 
 ### Run
 

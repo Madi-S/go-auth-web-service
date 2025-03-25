@@ -12,7 +12,8 @@ all: python go
 python:
 	@echo "Generating Python Protobuf files..."
 	python -m grpc_tools.protoc -I $(PROTO_SRC_DIR) $(PROTO_FILES) \
-		--python_out=$(PYTHON_OUT_DIR) --grpc_python_out=$(PYTHON_OUT_DIR)
+		--python_out=$(PYTHON_OUT_DIR) --grpc_python_out=$(PYTHON_OUT_DIR) \
+		--mypy_out=$(PYTHON_OUT_DIR)
 
 go:
 	@echo "Generating Go Protobuf files..."
