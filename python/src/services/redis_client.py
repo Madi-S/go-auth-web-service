@@ -8,9 +8,10 @@ def key_formatter(func) -> t.Callable:
     """Make sure that key is the first keyword or positional argument of the function"""
 
     @wraps(func)
-    def inner(*args: t.Any, **kwrags: t.Any) -> str:
-        key = kwrags.get("key") or args[0]
-        return func(*args, **kwrags, key=key)
+    def inner(*args: t.Any, **kwargs: t.Any) -> str:
+        key = kwargs.get("key") or args[0]
+        kwargs["key"] = key
+        return func(*args, **kwargs)
 
     return inner
 

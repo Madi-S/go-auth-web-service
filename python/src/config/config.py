@@ -2,7 +2,7 @@ import yaml
 
 
 class Config:
-    def __init__(self, filename="config.yaml"):
+    def __init__(self, filename: str):
         with open(filename, "r") as file:
             self.config = yaml.safe_load(file)
 
@@ -16,7 +16,7 @@ class Config:
 
 def get_config() -> Config:
     # TODO: add singleton
-    return Config()
+    return Config(filename="src/config/dev.yml")
 
 
 config = get_config()

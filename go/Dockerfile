@@ -20,4 +20,4 @@ COPY --from=builder /app/config /app/config
 
 EXPOSE 44044
 
-CMD ["/app/server", "--config=./app/config/dev.yml"]
+CMD ["/app/server", "--config=./app/config/dev1.yml"]

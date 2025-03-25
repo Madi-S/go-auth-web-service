@@ -4,7 +4,7 @@
 import grpc
 import warnings
 
-from sso import sso_pb2 as sso_dot_sso__pb2
+from protos.gen.sso import sso_pb2 as sso_dot_sso__pb2
 
 GRPC_GENERATED_VERSION = "1.63.0"
 GRPC_VERSION = grpc.__version__

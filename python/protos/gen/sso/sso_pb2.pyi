@@ -24,7 +24,9 @@ class RegisterRequest(google.protobuf.message.Message):
         email: builtins.str = ...,
         password: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["email", b"email", "password", b"password"]) -> None: ...
+    def ClearField(
+        self, field_name: typing.Literal["email", b"email", "password", b"password"]
+    ) -> None: ...
 
 global___RegisterRequest = RegisterRequest
 
@@ -60,7 +62,12 @@ class LoginRequest(google.protobuf.message.Message):
         password: builtins.str = ...,
         app_id: builtins.int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["app_id", b"app_id", "email", b"email", "password", b"password"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing.Literal[
+            "app_id", b"app_id", "email", b"email", "password", b"password"
+        ],
+    ) -> None: ...
 
 global___LoginRequest = LoginRequest
 
@@ -105,6 +112,8 @@ class IsAdminResponse(google.protobuf.message.Message):
         *,
         is_admin: builtins.bool = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["is_admin", b"is_admin"]) -> None: ...
+    def ClearField(
+        self, field_name: typing.Literal["is_admin", b"is_admin"]
+    ) -> None: ...
 
 global___IsAdminResponse = IsAdminResponse

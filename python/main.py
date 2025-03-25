@@ -7,7 +7,7 @@ app.include_router(dummy_router)
 
 
 @app.get("/ping")
-def root():
+def ping():
     return "pong"
 
 

@@ -5,11 +5,7 @@ services:
         build:
             context: ./go
             dockerfile: Dockerfile
-        # ports:
-        #     - '44044:44044'
         restart: unless-stopped
-        expose:
-            - '44044'
         networks:
             - internal_net
 
@@ -19,22 +15,23 @@ services:
             dockerfile: Dockerfile
         ports:
             - '8000:8000'
-        volumes:
-            - .:/app
         restart: always
         depends_on:
             - grpc-server
             - redis
         networks:
             - internal_net
+            - public_net
 
     redis:
         image: redis:latest
         container_name: redis_service
         restart: always
-        ports:
-            - '6379:6379'
+        networks:
+            - internal_net
 
 networks:
     internal_net:
+        driver: bridge
+    public_net:
         driver: bridge
